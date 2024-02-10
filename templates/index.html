@@ -1,0 +1,38 @@
+{% extends "template.html" %}
+
+{% block title %}
+  Sign in
+{% endblock %}
+
+{% block heading %}
+  Sign in to search books
+{% endblock %}
+
+{% block body %}
+  <form action="{{ url_for('index') }}" method="post">
+    <div class="row">
+      <div class="col-md-2 offset-md-5">
+        <input type="text" name="user_id" placeholder="User ID">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-2 offset-md-5">
+        <input type="text" name="user_password" placeholder="Password">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-1 offset-md-5">
+        <button class="btn btn-primary">Log in</button>
+      </div>
+      <div class="col-md-2">
+        <a href="{{ url_for('register') }}">Register</a>
+      </div>
+    </div>
+  </form>
+  <br>
+  <div class="col-md-2 offset-md-5">
+    <p style="color:red">{{ message }}</p>
+  </div>
+{% endblock %}

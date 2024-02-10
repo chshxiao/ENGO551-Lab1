@@ -1,0 +1,50 @@
+{% extends "template.html" %}
+
+{% block title %}
+  Book Index
+{% endblock %}
+
+{% block signout %}
+  <a href="{{ url_for('logout')}}">Sign Out</a>
+{% endblock %}
+
+{% block heading %}
+  Search for Books
+{% endblock %}
+
+{% block body %}
+  <form action="{{ url_for('main_page') }}" method="post">
+    <div class="row">
+      <div class="col-md-1 offset-md-4">
+        <select name="type">
+          <option value="isbn">ISBN</option>
+          <option value="title">Title</option>
+          <option value="author">Author</option>
+        </select>
+      </div>
+      <div class="col-md-2 offset-md-1">
+        <input type="text" name="value" placeholder="Enter Something">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-2 offset-md-5">
+        <button class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </form>
+  <br>
+  <div class="offset-md-4">
+    <ul>
+      {% for book in books %}
+        <div class="row">
+          <li>
+            <a href="{{ url_for('book_detail', isbn=book.isbn)}}">
+              {{ book.title }}
+            </a>
+          </li>
+        </div>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}
